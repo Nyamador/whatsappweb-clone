@@ -26,12 +26,16 @@ const ActionIcon = styled.div`
 	cursor: pointer;
 `;
 
-
 const SearchBarWrapper = styled.div`
 	background-color: var(--search-container-background);
+	position: relative;
+	z-index: 100;
 	flex: none;
-`
-
+	box-sizing: border-box;
+	height: 49px;
+	transition: box-shadow 0.18s ease-out,
+		background-color 0.25s ease-out;
+`;
 
 const SidebarHeader = () => {
 	return (
@@ -113,16 +117,78 @@ const SidebarHeader = () => {
 	);
 };
 
+const ChatsContainer = styled.div`
+	background-color: var(--background-default);
+	position: relative;
+	z-index: 1;
+	flex-grow: 1;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	height: 1000px;
+`;
 
-const SearchBar = ( ) => {
-	 return(
+const SearchBar = () => {
+	return (
+		<SearchBarWrapper>
+			<div>
+				<button className="search-button">
+					<span>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							width="24"
+							height="24"
+						>
+							<path
+								fill="currentColor"
+								d="M15.009 13.805h-.636l-.22-.219a5.184 5.184 0 0 0 1.256-3.386 5.207 5.207 0 1 0-5.207 5.208 5.183 5.183 0 0 0 3.385-1.255l.221.22v.635l4.004 3.999 1.194-1.195-3.997-4.007zm-4.808 0a3.605 3.605 0 1 1 0-7.21 3.605 3.605 0 0 1 0 7.21z"
+							></path>
+						</svg>
+					</span>
+				</button>
 
-	 )
-}
+				<div className="input-placeholder">
+					Search or start new chat
+				</div>
+				<label
+					style={{
+						right: '14px',
+						left: '12px',
+						paddingRight: '32px',
+						paddingLeft: '65px',
+						position: 'absolute',
+						top: '7px',
+						display: 'flex',
+						alignItems: 'center',
+						boxSizing: 'border-box',
+						height: '35px',
+						backgroundColor: 'var(--search-input-background)',
+						borderRadius: '18px',
+					}}
+				>
+					<div contenteditable="true" />
+				</label>
+			</div>
+		</SearchBarWrapper>
+	);
+};
+
+const ChatTab = () => {
+	return <div></div>;
+};
+
 const SideBar = () => {
 	return (
 		<SidebarWrapper>
 			<SidebarHeader />
+			<SearchBar />
+
+			<ChatsContainer>
+				<div aria-label="Chat list. Press right arrow key on a chat to open chat context menu.">
+					<ChatTab />
+				</div>
+			</ChatsContainer>
 		</SidebarWrapper>
 	);
 };
