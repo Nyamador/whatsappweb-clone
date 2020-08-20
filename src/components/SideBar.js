@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import profilePhoto from '../profilephoto.jpg';
+import cov from '../cov.jpg';
 
 const SidebarWrapper = styled.div`
 	flex-basis: 30%;
@@ -128,6 +129,17 @@ const ChatsContainer = styled.div`
 	height: 1000px;
 `;
 
+const ChatTabWrapper = styled.div`
+	z-index: 421;
+	transition: none 0s ease 0s;
+	height: 72px;
+	transform: translateY(0px);
+	position: absolute;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+`;
+
 const SearchBar = () => {
 	return (
 		<SearchBarWrapper>
@@ -175,7 +187,19 @@ const SearchBar = () => {
 };
 
 const ChatTab = () => {
-	return <div></div>;
+	return (
+		<ChatTabWrapper>
+			<div className="chat-tab-photo">
+				<img src={cov} alt="Chat" />
+			</div>
+			<div role="option">
+				<div className="chat-tab-details">
+					<p>Coventru</p>
+					<p>Coventru</p>
+				</div>
+			</div>
+		</ChatTabWrapper>
+	);
 };
 
 const SideBar = () => {
@@ -184,7 +208,7 @@ const SideBar = () => {
 			<SidebarHeader />
 			<SearchBar />
 
-			<ChatsContainer>
+			<ChatsContainer className="chats-container">
 				<div aria-label="Chat list. Press right arrow key on a chat to open chat context menu.">
 					<ChatTab />
 				</div>
