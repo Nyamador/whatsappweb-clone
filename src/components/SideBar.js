@@ -52,7 +52,7 @@ const SidebarHeader = () => {
 					>
 						<img
 							src={profilePhoto}
-							alt="Profile Photo"
+							alt="Profile"
 							className="profilephoto"
 						/>
 					</div>
